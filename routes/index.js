@@ -13,10 +13,13 @@ var Event = mongoose.model('Event', {
     timestamp: Date,
     location: String,
     description: String,
-    categories: String,
+    categories: String,  // change categories to checkboxes and add and other
     companies: String,
     sponsor: String,
-    openSpaces: String
+    maxCapacity: String,
+    // when Register is working, take number of registered attendants and get remainning spaces
+    // currentAttendants: number from Register
+    // remainingSpaces: maxCapacity - currentAttendants
 });
 
 

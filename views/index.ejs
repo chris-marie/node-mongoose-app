@@ -5,17 +5,26 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-
-
-    <form name="create_event">
-
-      <input type="text" name="title"/>
-      <input type="datetime" name="timestamp"/>
-      <input type="text" name="location"/>
-      <input type="submit" value="Create Event"></button>
-    </form>
-    <script src="/javascripts/index.js"></script>
-  </body>
+    <header>Hiring Boost: Events</header>
+    <div class="sidebar">
+      <div id="eventSearchBar">
+	<input type="text" placeholder="Search Events by location or date"/>
+	<div id="eventSearchResultsContainer">There are currently no events.</div>
+      </div>
+    </div>
+    <div class="main">
+      <form name="create_event">
+	<input type="text" name="title" placeholder="Event Title..."/>
+	<input type="datetime" name="timestamp" placeholder="Event Date/time..."/>
+	<input type="text" name="location" placeholder="Event Location..."/>
+	<input type="text" name="description" placeholder="Description of Event..."/>
+	<input type="text" name="categories" placeholder="Categories: UI, UX, backend, cloud, ops, ect"/>
+	<input type="text" name="companies" placeholder="Companies Attending..."/>
+	<input type="text" name="sponsor" placeholder="Event Sponsor..."/>
+	<input type="text" name="maxCapacity" placeholder="Maximum Attendance..."/>
+	<input type="submit" value="Create Event"></button>
+</form>
+</div>
+<script src="/javascripts/index.js"></script>
+</body>
 </html>
