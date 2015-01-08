@@ -1,4 +1,4 @@
-	var express = require('express');
+var express = require('express');
 var router = express.Router();
 
 // mongoose handling
@@ -11,7 +11,8 @@ mongoose.connect('mongodb://localhost/test');
 var eventSchema = mongoose.schema ({ 
     title: {
 	type: String,
-	unique: true
+	unique: true 	// not currently working - 
+	//find another way to filter for unique titles
     },
     timestamp: Date,
     location: String,
@@ -25,9 +26,25 @@ var eventSchema = mongoose.schema ({
     // remainingSpaces: maxCapacity - currentAttendants
 });
 
+// ADDING A STATIC HELPER FUNCTION to identify unique titles of events
+eventSchema.statics.findUniqueEventTitles = function(callback) {
+    console.log('searching for unique title');
+    return this.find({ title: { unique: true}}, callback);
+};
+
 
 // MODELS ARE USED TO CREATE INSTANCES OF DATA THAT WILL BE STORED IN DOCUMENTS
 var Events = mongoose.model('Events', eventSchema});
+
+
+// APPLY STATIC HELPER FUNCTION for unique events
+Event.findUniqueEventTitles(function (err,  events) {
+    if(err) return console.log('ERROR on finding unique titles in events: ' + err);
+    else {
+	console.log('Events found with unique titles: ' + events);
+	// add display event div to page
+    }
+});
 
 // SAMPLE MOVIE DATA BY INATIATING AN EVENTS MODEL
 
@@ -53,31 +70,32 @@ eventSample.save(function( err, eventSample) {
 /* GET home page.   */
 ///// DOES THIS COME BEFORE OR AFTER all the main page work, search result display, and form?
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Events by Hiring Boost' });
+    res.render('index', { title: 'Events by Hiring Boost' });
 });
 
 router.get('/events', function (req, res) {
-  Event.find(function (err, results) {
-    if (err) {
-      res.status(500).json({ 'message': err });
-    } else {
-      res.status(200).json(results);
-    }
-  });
+    Event.find(function (err, results) {
+	if (err) {
+	    res.status(500).json({ 'message': err });
+	} else {
+	    res.status(200).json(results);
+	}
+    });
 });
 
 router.post('/events', function(req, res) {
-  var event = new Event(req.body);
-  event.save(function (err, result) {
-    if (err) {
-      console.log('Error encountered in creating the event ... ');
-      res.status(500).json({ 'message': err });
-    }
-    else {
-      console.log('Event created', result);
-      res.status(200).json(result);
-    }
-  });
+    var event = new Event(req.body);
+    event.save(function (err, result) {
+	if (err) {
+	    console.log('Error encountered in creating the event ... ');
+	    res.status(500).json({ 'message': err });
+	}
+	else {
+	    console.log('Event created', result);
+	    res.status(200).json(result);
+	    
+	}
+    });
 });
 
 
