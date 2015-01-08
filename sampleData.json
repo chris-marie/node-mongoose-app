@@ -1,0 +1,21 @@
+{
+    "eventType": "Job Fair",
+    "title" : "Lake of Dreams",
+    "date": "01-14-2015",
+    "location": {
+	"streetAddress" : "3901 Saddel Road",
+	"city": "South Lake Tahoe",
+	"state": "CA",
+	"zip": "96150",
+	"long": "-119.93830" , 
+	"lat": "38.93850"
+	},
+    "description": "This is a job fair by companies recruiting for front-end web application development jobs. Set by the beautiful Lake Tahoe for a relaxing atmosphere during the stress of job searching."
+    "maxCap": "300",
+    "categories": ["Job Fair", "UI", "UX", "Cloud Services", "Design"],
+    "sponsor": "GoLive",
+    "companies": ["Square", "Amazon", "Starbucks", "Nest", "Apple", "Closure", "Walmart", "Yahoo"],
+    "currentAttendance": "199",
+    "openSpaces": "101"
+}
+ 

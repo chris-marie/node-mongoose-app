@@ -6,21 +6,23 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 
 var Event = mongoose.model('Event', {
-  title: {
-    type: String,
-    unique: true
-  },
-  timestamp: Date,
-  location: String
+    title: {
+	type: String,
+	unique: true
+    },
+    timestamp: Date,
+    location: String,
+    description: String,
+    categories: String,
+    companies: String,
+    sponsor: String,
+    openSpaces: String
 });
-
-
-
 
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Events by Hiring Boost' });
 });
 
 router.get('/events', function (req, res) {
